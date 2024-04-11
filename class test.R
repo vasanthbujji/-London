@@ -96,57 +96,25 @@ print(paste("Major crime category for region with the highest number of crimes:"
 print(paste("Major crime category for region with the lowest number of crimes:", unique(subset_LC$MajorCategory)))
 
 #Q9
+par(mfrow = c(1, 2))
+# Ploting for subset with highest number of crimes
+barplot(table(subset_HC$MajorCategory),
+        main = paste("Major Crime Categories in", region_HC),
+        xlab = "Major Crime Category",
+        ylab = "Number of Reported Crimes",
+        las = 2, 
+        ylim = c(0, max(table(subset_HC$MajorCategory), table(subset_LC$MajorCategory))),
+        col = "skyblue")
+# Ploting for subset with lowest number of crimes
+barplot(table(subset_LC$MajorCategory),
+        main = paste("Major Crime Categories in", region_LC),
+        xlab = "Major Crime Category",
+        ylab = "Number of Reported Crimes",
+        las = 2,
+        ylim = c(0, max(table(subset_HC$MajorCategory), table(subset_LC$MajorCategory))),
+        col = "lightgreen")
+# Reseting graphics parameters
+par(mfrow = c(1, 1))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Q10
+write.csv(london_crime, file = "london-crime-modified.csv", row.names = FALSE)
